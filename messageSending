@@ -1,0 +1,322 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "message",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -64,
+        0
+      ],
+      "id": "65b8574e-e3b7-4380-8044-c16a26701739",
+      "name": "Webhook",
+      "webhookId": "bbc5e10d-3495-4844-b509-42bdd8ec50ff"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://services.leadconnectorhq.com/contacts/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-20706c75-4351-4eb9-9c59-6d92cd6b8acc"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"locationId\": \"vr1x3FfzhI4Iyb674IWr\",\n  \"page\": 1,\n  \"pageLimit\": 20,\n  \"filters\": [\n    {\n      \"field\": \"phone\",\n      \"operator\": \"eq\",\n      \"value\": \"{{ $json.body.phone ? ('+' + $json.body.phone.replace(/[^0-9]/g,'').replace(/^1?/, '1')) : \"\" }}\"\n    }\n  ],\n  \"query\": \"{{ $json.body.phone ? ('+' + $json.body.phone.replace(/[^0-9]/g,'').replace(/^1?/, '1')) : \"\" }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        512,
+        0
+      ],
+      "id": "c61e04f0-9963-4ea4-9573-233d22a5ef2c",
+      "name": "Get Contact"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/conversations/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-20706c75-4351-4eb9-9c59-6d92cd6b8acc"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Version",
+              "value": "2021-04-15"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"type\": \"SMS\",\n  \"contactId\": \"{{ $json.contact.id }}\",\n  \"message\": \"{{ $('Webhook').item.json.body.message }}\",\n  \"fromNumber\": \"+19547994955\",\n  \"toNumber\": \"{{ $json.contact.phone }}\",\n  \"status\": \"delivered\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1088,
+        0
+      ],
+      "id": "6af61831-ce92-43c9-bc42-229ce1379290",
+      "name": "Send Message"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/contacts/upsert",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-20706c75-4351-4eb9-9c59-6d92cd6b8acc"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"locationId\": \"vr1x3FfzhI4Iyb674IWr\",\n  \"assignedTo\": \"ZEKXe1IAPnIaKfhDVevw\",\n  \"phone\": \"{{ $('Webhook').item.json.body.phone }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        768,
+        0
+      ],
+      "id": "d25cbd5a-25d8-4d90-871e-a5ff67f77ed1",
+      "name": "Changing Owner to Ai (AI Bot)"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/contacts/upsert",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-20706c75-4351-4eb9-9c59-6d92cd6b8acc"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"locationId\": \"vr1x3FfzhI4Iyb674IWr\",\n  \"assignedTo\": \"{{ $('Get Contact').item.json.contacts[0].assignedTo }}\",\n  \"phone\": \"{{ $('Changing Owner to Ai (AI Bot)').item.json.contact.phone }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1376,
+        0
+      ],
+      "id": "15de3900-4845-422d-807a-069a86255e39",
+      "name": "Changing Ai to Owner"
+    },
+    {
+      "parameters": {
+        "content": "## Message Sending & Changing Owner\n",
+        "height": 384,
+        "width": 2048,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -144,
+        -144
+      ],
+      "typeVersion": 1,
+      "id": "2c11b69e-ac8f-4fbb-9eb3-4ca1ab2073c1",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1648,
+        0
+      ],
+      "id": "97f30614-e07a-4ac0-9597-21b121c0ce87",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "amount": 4
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "339da011-fcdc-49da-95f4-e1407ce1f4e5",
+      "name": "Wait",
+      "webhookId": "41a27760-d0dd-4142-bb96-4d26d60aa33a"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Contact": {
+      "main": [
+        [
+          {
+            "node": "Changing Owner to Ai (AI Bot)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Message": {
+      "main": [
+        [
+          {
+            "node": "Changing Ai to Owner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Changing Owner to Ai (AI Bot)": {
+      "main": [
+        [
+          {
+            "node": "Send Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Changing Ai to Owner": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Get Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {
+    "Webhook": [
+      {
+        "headers": {
+          "host": "n8n.srv1066443.hstgr.cloud",
+          "user-agent": "axios/0.21.4",
+          "content-length": "720",
+          "accept": "application/json, text/plain, */*",
+          "content-type": "application/json",
+          "x-forwarded-for": "34.45.214.28",
+          "x-forwarded-host": "n8n.srv1066443.hstgr.cloud",
+          "x-forwarded-port": "443",
+          "x-forwarded-proto": "https",
+          "x-forwarded-server": "d666f87417e8",
+          "x-real-ip": "34.45.214.28",
+          "accept-encoding": "gzip"
+        },
+        "params": {},
+        "query": {},
+        "body": {
+          "id": "rQeInyT0yQn30KlRmITY",
+          "name": "Yousaf Developer",
+          "email": "yousaf7272@getaichatbots.com",
+          "phone": "(305) 508-3815",
+          "message": "Hi yousaf! Here’s how it works, step by step:\\n\\n1. I’ve saved your info for Davie with your 7 Days for $7 intro.  \\n2. A Davie team member will contact you to pick your first class time and finalize your intro pass.  \\n3. You show up about 15 minutes early to your first class so a coach can give you a quick tour, explain the workout, and get your waiver done.  \\n4. After that first session, they’ll help you download the F45 app so you can book the rest of your week easily.\\n\\nAre you thinking more about morning or evening classes so we can point you to the best times?"
+        },
+        "webhookUrl": "https://n8n.srv1066443.hstgr.cloud/webhook/message",
+        "executionMode": "production"
+      }
+    ]
+  },
+  "meta": {
+    "instanceId": "2290e35adb7a4a49a129e98b9d64c08c12bada1f585aa2e4c9049d5940a23721"
+  }
+}
