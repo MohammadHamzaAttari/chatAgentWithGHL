@@ -1,0 +1,1539 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "retell",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -576,
+        480
+      ],
+      "id": "eb663d1a-af4d-48fc-adcf-801dffe24c31",
+      "name": "Webhook",
+      "webhookId": "764f1747-2f3a-4cfd-910c-2ada29bf6821"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4ddd3fa2-370f-4d90-a313-9918934a9a4c",
+                    "leftValue": "={{\n  $json.body?$json.body.key? $json.body.key: $json.body.args.JSON.key: \"\"\n}}",
+                    "rightValue": "=contact_creation_davie",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "0b53ff2d-4ea9-4921-a7c9-331bbcc48d99",
+                    "leftValue": "={{\n  $json.body?$json.body.key? $json.body.key:$json.body.args.JSON.key : \"\"\n}}",
+                    "rightValue": "contact_creation_miramar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "087506be-2fdc-4050-b462-0fd57a2dc62e",
+                    "leftValue": "={{\n  $json.body?$json.body.key? $json.body.key:$json.body.args.JSON.key : \"\"\n}}",
+                    "rightValue": "contact_creation_pines",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "514a3898-66e6-4969-aeb2-d8edd0b769d0",
+                    "leftValue": "={{\n  $json.body?$json.body.key? $json.body.key:$json.body.args.JSON.key : \"\"\n}}",
+                    "rightValue": "escalation",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "095a5784-eb1d-4959-9d5b-d421f38c6702",
+                    "leftValue": "={{ $json.body.name }}",
+                    "rightValue": "get_contact",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4e608966-7bce-40cc-846e-a67d2990f59b",
+                    "leftValue": "={{   $json.body?$json.body.key? $json.body.key:$json.body.args.JSON.key : \"\" }}",
+                    "rightValue": "check_availability",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "dbf56f85-7154-468b-a0f8-b28c31f7a3ab",
+                    "leftValue": "={{   $json.body?$json.body.key? $json.body.key:$json.body.args.JSON.key : \"\" }}",
+                    "rightValue": "book_appointment",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        -352,
+        400
+      ],
+      "id": "a0535a0d-b573-4501-be32-4687cfb86cd0",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/contacts/upsert",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-aef4d5ef-baf8-48f3-a043-009ca2c970c9"
+            },
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": \"{{ $json.body.key?$json.body.name:$json.body.args.JSON.name}}\",\n  \"firstName\": \"{{ $json.body.key?$json.body.name:$json.body.args.JSON.name }}\",\n  \"email\": \"{{ $json.body.key?$json.body.email:$json.body.args.JSON.email }}\",\n\"phone\": \"{{ $json.body.key?$json.body.phone.replace(/[^0-9]/g, '').replace(/^1?/, '1'):$json.body.call.to_number }}\",\n  \"locationId\": \"vr1x3FfzhI4Iyb674IWr\",\n  \"assignedTo\": \"ILQWhML6ia2o2UPbKZCq\",\n  \n  \"tags\": [\n    \"davie\",\"testing\"\n  ],\n  \"customFields\": [\n    {\n      \"id\": \"ANFbtdjm6sD2I5dP01Da\",\n      \"value\": \"626701\"\n    },\n{\n\"id\":\"kmw04WvY3Q2qQWTWDs3r\",\n\"value\":\"Member\"\n}\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -128,
+        0
+      ],
+      "id": "3900818e-a42d-451f-a225-bb83b9c2bce5",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        96,
+        0
+      ],
+      "id": "77f570dd-9000-41f9-ba28-db52900f1ee0",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/contacts/upsert",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-aef4d5ef-baf8-48f3-a043-009ca2c970c9"
+            },
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": \"{{ $json.body.key?$json.body.name:$json.body.args.JSON.name}}\",\n  \"firstName\": \"{{ $json.body.key?$json.body.name:$json.body.args.JSON.name }}\",\n  \"email\": \"{{ $json.body.key?$json.body.email:$json.body.args.JSON.email }}\",\n\"phone\": \"{{ $json.body.key?$json.body.phone.replace(/[^0-9]/g, '').replace(/^1?/, '1'):$json.body.call.to_number }}\",\n  \"locationId\": \"vr1x3FfzhI4Iyb674IWr\",\n  \"assignedTo\": \"lH9Y4l2WGWnHMpdWAB4o\",\n  \"tags\": [\n    \"miramar\",\"testing\"\n  ],\n  \"customFields\": [\n    {\n      \"id\": \"ANFbtdjm6sD2I5dP01Da\",\n      \"value\": \"626701\"\n    }\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -128,
+        192
+      ],
+      "id": "2941a4b4-9f16-4287-af67-99a95f2d8db6",
+      "name": "HTTP Request6"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        96,
+        192
+      ],
+      "id": "e35cb8d3-6229-42bc-88e0-dd28900dcc32",
+      "name": "Respond to Webhook4"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/contacts/upsert",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-aef4d5ef-baf8-48f3-a043-009ca2c970c9"
+            },
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": \"{{ $json.body.key?$json.body.name:$json.body.args.JSON.name}}\",\n  \"firstName\": \"{{ $json.body.key?$json.body.name:$json.body.args.JSON.name }}\",\n  \"email\": \"{{ $json.body.key?$json.body.email:$json.body.args.JSON.email }}\",\n\"phone\": \"{{ $json.body.key?$json.body.phone.replace(/[^0-9]/g, '').replace(/^1?/, '1'):$json.body.call.to_number }}\",\n  \"locationId\": \"vr1x3FfzhI4Iyb674IWr\",\n  \"assignedTo\": \"lH9Y4l2WGWnHMpdWAB4o\",\n  \"tags\": [\n    \"pines\",\"testing\"\n  ],\n  \"customFields\": [\n    {\n      \"id\": \"ANFbtdjm6sD2I5dP01Da\",\n      \"value\": \"5723020\"\n    }\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -128,
+        384
+      ],
+      "id": "0f2e9685-637c-421f-b35b-98cdbac6c210",
+      "name": "HTTP Request9"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        96,
+        384
+      ],
+      "id": "1790b933-f603-4747-9169-41b6be6e81cc",
+      "name": "Respond to Webhook5"
+    },
+    {
+      "parameters": {
+        "content": "## Create Contact & Opportunity Davie\n",
+        "height": 208,
+        "width": 1232
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -256,
+        -48
+      ],
+      "id": "17cd1d9b-b043-4653-b270-8e81e0d7dbbe",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Create Contact For Miramar",
+        "height": 208,
+        "width": 1232,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -256,
+        144
+      ],
+      "id": "0fa50c7c-7283-4df4-bbe0-4aa6a3d4026b",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Create contact&Op for Pines",
+        "height": 192,
+        "width": 1232
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -256,
+        352
+      ],
+      "id": "805810d6-d8c3-41b3-ab44-24a6b99ee88a",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Switching Webhook",
+        "height": 1376,
+        "width": 640,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -864,
+        48
+      ],
+      "id": "5dd8d241-7c3b-40de-8414-88f9b358cc58",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1040,
+        1232
+      ],
+      "id": "637b1ac6-c287-45cb-aa7d-be98a843d5fc",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/hooks/vr1x3FfzhI4Iyb674IWr/webhook-trigger/cca5c0d1-52fe-43b2-a717-bbcda3f36ef2",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-aef4d5ef-baf8-48f3-a043-009ca2c970c9"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Version",
+              "value": "2021-04-15"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"type\": \"SMS\",\n  \"contactId\": \"Hy51G5dsbnzgf21NaNeP\",\n  \"contactName\":\"{{ $json.body.contact_name?$json.body.contact_name:$json.body.args.JSON.contact_name }}\",\n  \"contactPhone\":\"{{ $json.body.contact_phone?$json.body.contact_phone:$('Switch').item.json.body.call.to_number }}\",\n  \"subject\":\"{{ $json.body.summary?$json.body.summary:$json.body.args.JSON.summary }}\",\n  \"message\": \"{{ $json.body.details?$json.body.details:$json.body.args.JSON.details }}\",\n  \"studioName\":\"{{ $json.body.studioName?$json.body.studioName:$json.body.args.JSON.studioName }}\",\n  \"status\": \"delivered\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        816,
+        1232
+      ],
+      "id": "2e0592e4-5eed-438b-ac19-5a0db3bbf20e",
+      "name": "Send Message"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{$json.body? $json.body.key?$json.body.studioName:$json.body.args.JSON.studioName: \"\"}}",
+                    "rightValue": "Davie",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "04f95183-0e6e-4f4d-b533-ca84757cb7f4"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7ec78efd-2af6-45ec-9073-87e7783cf8ea",
+                    "leftValue": "={{$json.body? $json.body.key?$json.body.studioName:$json.body.args.JSON.studioName: \"\"}}",
+                    "rightValue": "Miramar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d05df55d-a7d6-4bd4-9c09-4b06d3e9a83a",
+                    "leftValue": "={{$json.body? $json.body.key?$json.body.studioName:$json.body.args.JSON.studioName: \"\"}}",
+                    "rightValue": "Pines",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        592,
+        1408
+      ],
+      "id": "9fa8f30d-5f1f-44ce-823c-5b2e04e6286f",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1040,
+        1424
+      ],
+      "id": "0da687de-2c9e-444a-b126-e49cf92b80b0",
+      "name": "Respond to Webhook2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/hooks/vr1x3FfzhI4Iyb674IWr/webhook-trigger/cca5c0d1-52fe-43b2-a717-bbcda3f36ef2",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-aef4d5ef-baf8-48f3-a043-009ca2c970c9"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Version",
+              "value": "2021-04-15"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"type\": \"SMS\",\n  \"contactId\": \"Hy51G5dsbnzgf21NaNeP\",\n  \"contactName\":\"{{ $json.body.contact_name?$json.body.contact_name:$json.body.args.JSON.contact_name }}\",\n  \"contactPhone\":\"{{ $json.body.contact_phone?$json.body.contact_phone:$('Switch').item.json.body.call.to_number }}\",\n  \"subject\":\"{{ $json.body.summary?$json.body.summary:$json.body.args.JSON.summary }}\",\n  \"message\": \"{{ $json.body.details?$json.body.details:$json.body.args.JSON.details }}\",\n  \"studioName\":\"{{ $json.body.studioName?$json.body.studioName:$json.body.args.JSON.studioName }}\",\n  \"status\": \"delivered\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        816,
+        1424
+      ],
+      "id": "687ee7f3-ba24-46aa-9a7b-0cd48a4e23aa",
+      "name": "Send Message1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1040,
+        1616
+      ],
+      "id": "f8f21dc0-0ef4-4933-a627-18b0c23d22e8",
+      "name": "Respond to Webhook3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/hooks/vr1x3FfzhI4Iyb674IWr/webhook-trigger/cca5c0d1-52fe-43b2-a717-bbcda3f36ef2",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-aef4d5ef-baf8-48f3-a043-009ca2c970c9"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Version",
+              "value": "2021-04-15"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"type\": \"SMS\",\n  \"contactId\": \"Hy51G5dsbnzgf21NaNeP\",\n  \"contactName\":\"{{ $json.body.contact_name?$json.body.contact_name:$json.body.args.JSON.contact_name }}\",\n  \"contactPhone\":\"{{ $json.body.contact_phone?$json.body.contact_phone:$('Switch').item.json.body.call.to_number }}\",\n  \"subject\":\"{{ $json.body.summary?$json.body.summary:$json.body.args.JSON.summary }}\",\n  \"message\": \"{{ $json.body.details?$json.body.details:$json.body.args.JSON.details }}\",\n  \"studioName\":\"{{ $json.body.studioName?$json.body.studioName:$json.body.args.JSON.studioName }}\",\n  \"status\": \"delivered\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        816,
+        1616
+      ],
+      "id": "a0921c56-6e75-42f2-b20a-912c829ccabf",
+      "name": "Send Message2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/contacts/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-aef4d5ef-baf8-48f3-a043-009ca2c970c9"
+            },
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"locationId\": \"vr1x3FfzhI4Iyb674IWr\",\n  \"page\": 1,\n  \"pageLimit\": 20,\n  \"filters\": [\n    {\n      \"field\": \"phone\",\n      \"operator\": \"eq\",\n      \"value\": \"{{ $json.body.chat?.retell_llm_dynamic_variables?.phone ? ('+' + $json.body.chat.retell_llm_dynamic_variables.phone.replace(/[^0-9]/g,'').replace(/^1?/, '1')) : $json.body.call.from_number }}\"\n    }\n  ],\n  \"query\": \"{{ $json.body.chat?.retell_llm_dynamic_variables?.phone ? ('+' + $json.body.chat.retell_llm_dynamic_variables.phone.replace(/[^0-9]/g,'').replace(/^1?/, '1')) : $json.body.call.from_number }}\"\n}\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        832,
+        1984
+      ],
+      "id": "20dad0ce-bacd-46a2-896d-f7d2a5ece508",
+      "name": "HTTP Request12"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1056,
+        1984
+      ],
+      "id": "e0e66ec6-8727-4cd5-9303-cfa9b7196ec4",
+      "name": "Respond to Webhook6"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Function to convert NY Date String -> UTC Timestamp (Milliseconds)\nfunction getNyTimestamp(dateStr) {\n  if (!dateStr) return null;\n\n  // 1. Clean the input string to ensure it looks like ISO\n  // We remove existing 'Z' or offsets to strictly treat the numbers as NY time\n  let cleanStr = dateStr.replace(\" \", \"T\").split(\"Z\")[0].split(\"+\")[0];\n  \n  // Remove negative offsets if present (e.g. -05:00)\n  if (cleanStr.includes(\"-\") && cleanStr.split(\"-\").length > 3) {\n     const parts = cleanStr.split(\"-\");\n     cleanStr = parts.slice(0, 3).join(\"-\"); \n     // Re-attach time part if it existed\n     if (dateStr.includes(\"T\")) cleanStr += \"T\" + dateStr.split(\"T\")[1].split(\"-\")[0];\n  }\n\n  // 2. Create a \"Base\" Date assuming the input numbers are UTC\n  const baseDate = new Date(cleanStr + \"Z\"); \n\n  // 3. Find out what time it is in New York for that specific UTC moment\n  // This handles Daylight Savings Time automatically.\n  const nyString = baseDate.toLocaleString('en-US', { timeZone: 'America/New_York' });\n\n  // 4. Calculate the discrepancy (Offset) between UTC and NY\n  // We parse the NY string back as UTC to compare apples-to-apples\n  const nyDate = new Date(nyString + \" UTC\");\n  \n  const offset = baseDate.getTime() - nyDate.getTime();\n\n  // 5. Add the offset to the base date to shift it to the correct UTC time\n  return baseDate.getTime() + offset;\n}\n\n// ============================================\n// MAIN N8N LOOP\n// ============================================\nreturn items.map(item => {\n  // CORRECTED: Use 'item.json' (not $input.first) to get data for specific row\n  let rawDate = $input.first().json.body.date;\n\n  if (rawDate) {\n    // 1. Extract just the Date part (YYYY-MM-DD)\n    // Handles \"2025-12-04T...\" or \"2025-12-04 ...\"\n    const datePart = rawDate.replace(\" \", \"T\").split(\"T\")[0];\n\n    // 2. Create Explicit Strings for 12:00 AM and 11:59:59 PM\n    const startOfDayStr = `${datePart}T00:00:00`;\n    const endOfDayStr   = `${datePart}T23:59:59`;\n\n    // 3. Convert these NY times to UTC Epoch Ms\n    const startMs = getNyTimestamp(startOfDayStr);\n    const endMs = getNyTimestamp(endOfDayStr);\n\n    // 4. Output as Strings\n    item.json.startTimestamp = String(startMs);\n    item.json.endTimestamp = String(endMs);\n  }\n\n  return item;\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        640,
+        544
+      ],
+      "id": "682a7626-dee2-41ab-b00d-320bf89ab27f",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.studioName }}",
+                    "rightValue": "=Miramar",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "b8780706-04d1-4de4-a75c-246e989d685a"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "788cc099-afb8-43f2-b42f-355e6b9a7bd4",
+                    "leftValue": "={{ $json.body.studioName }}",
+                    "rightValue": "Davies",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9af26a8c-cae0-4afe-90fb-9ee8b14bfdc4",
+                    "leftValue": "={{ $json.body.studioName }}",
+                    "rightValue": "Pines",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        880,
+        544
+      ],
+      "id": "963de34f-0fda-484d-918a-e8939448176b",
+      "name": "Switch2"
+    },
+    {
+      "parameters": {
+        "url": "https://services.leadconnectorhq.com/calendars/JpJHJ5CpKcYAeKJH7wu9/free-slots",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "startDate",
+              "value": "={{ $json.startTimestamp }}"
+            },
+            {
+              "name": "endDate",
+              "value": "={{ $json.endTimestamp }}"
+            },
+            {
+              "name": "timezone",
+              "value": "America/New_York"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-aef4d5ef-baf8-48f3-a043-009ca2c970c9"
+            },
+            {
+              "name": "Version",
+              "value": "2021-04-15"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1104,
+        208
+      ],
+      "id": "630d9ad4-6f34-4f6e-aba4-d55d5d909288",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1296,
+        208
+      ],
+      "id": "be1183d7-93f7-432f-977c-9691fd22df98",
+      "name": "Respond to Webhook7"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/calendars/events/appointments",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-aef4d5ef-baf8-48f3-a043-009ca2c970c9"
+            },
+            {
+              "name": "Version",
+              "value": "2021-04-15"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "title",
+              "value": "={{ $json.contacts[0].firstNameLowerCase }} phone: {{ $json.contacts[0].phone }} booked a class at {{ $('Switch').item.json.body.studioName }} studio"
+            },
+            {
+              "name": "appointmentStatus",
+              "value": "confirmed"
+            },
+            {
+              "name": "description",
+              "value": "=Class booking at {{ $('Switch').item.json.body.studioName }} Studio on {{ $('Switch').item.json.body.datetime }}"
+            },
+            {
+              "name": "address",
+              "value": "={{ $('Switch').item.json.body.studioName }} Studio "
+            },
+            {
+              "name": "calendarId",
+              "value": "JpJHJ5CpKcYAeKJH7wu9"
+            },
+            {
+              "name": "locationId",
+              "value": "vr1x3FfzhI4Iyb674IWr"
+            },
+            {
+              "name": "contactId",
+              "value": "={{ $json.contacts[0].id }}"
+            },
+            {
+              "name": "startTime",
+              "value": "={{ $('Switch').item.json.body.datetime }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1808,
+        752
+      ],
+      "id": "d23c6d6b-18f0-4c0a-bdd9-e493d2029d18",
+      "name": "HTTP Request3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/contacts/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-20706c75-4351-4eb9-9c59-6d92cd6b8acc"
+            },
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"locationId\": \"vr1x3FfzhI4Iyb674IWr\",\n  \"page\": 1,\n  \"pageLimit\": 20,\n  \"filters\": [\n    {\n      \"field\": \"phone\",\n      \"operator\": \"eq\",\n      \"value\": \"{{ '+'+$json.body.contact_phone.replace(/[^0-9]/g, '').replace(/^1?/, '1') }}\"\n    }\n  ],\n  \"query\": \"{{ \"+\"+$json.body.contact_phone.replace(/[^0-9]/g, '').replace(/^1?/, '1') }}\"\n}\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        608,
+        768
+      ],
+      "id": "7311f74c-adda-45d6-9739-1da74ee398a3",
+      "name": "HTTP Request14"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4917c711-43e3-47b3-a8c4-5f3b07dac65c",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2016,
+        752
+      ],
+      "id": "58bef2ba-0679-42bf-bdf5-e1612d2b1d3f",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"result\": \"booking has been confirmed\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        2224,
+        656
+      ],
+      "id": "05a95258-bd63-4dc7-bff9-072c7f26e515",
+      "name": "Respond to Webhook8"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"result\": \"Unfortunately, there is issue in booking your class one of our team member connect to you to book class manually.\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        2224,
+        848
+      ],
+      "id": "02946022-f556-4e80-866d-aa5aba827ec8",
+      "name": "Respond to Webhook9"
+    },
+    {
+      "parameters": {
+        "url": "https://services.leadconnectorhq.com/calendars/JpJHJ5CpKcYAeKJH7wu9/free-slots",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "startDate",
+              "value": "={{ $json.startTimestamp }}"
+            },
+            {
+              "name": "endDate",
+              "value": "={{ $json.endTimestamp }}"
+            },
+            {
+              "name": "timezone",
+              "value": "America/New_York"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-aef4d5ef-baf8-48f3-a043-009ca2c970c9"
+            },
+            {
+              "name": "Version",
+              "value": "2021-04-15"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1136,
+        368
+      ],
+      "id": "059f2cd6-8ac0-44a5-9eaf-93034eb6c8f4",
+      "name": "HTTP Request4"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1312,
+        368
+      ],
+      "id": "cb5fa7eb-0581-4fc9-96b9-330e9ba4fd8a",
+      "name": "Respond to Webhook10"
+    },
+    {
+      "parameters": {
+        "url": "https://services.leadconnectorhq.com/calendars/JpJHJ5CpKcYAeKJH7wu9/free-slots",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "startDate",
+              "value": "={{ $json.startTimestamp }}"
+            },
+            {
+              "name": "endDate",
+              "value": "={{ $json.endTimestamp }}"
+            },
+            {
+              "name": "timezone",
+              "value": "America/New_York"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer pit-aef4d5ef-baf8-48f3-a043-009ca2c970c9"
+            },
+            {
+              "name": "Version",
+              "value": "2021-04-15"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1152,
+        528
+      ],
+      "id": "58732aa0-8a76-4c0b-a3e1-b28a3f7234c5",
+      "name": "HTTP Request5"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1344,
+        528
+      ],
+      "id": "8f5c4b57-64a6-418d-840c-20a038b52656",
+      "name": "Respond to Webhook11"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "a7e396b4-3c04-4e92-91ae-365639b0cb43"
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        896,
+        768
+      ],
+      "id": "e5e8713c-9a98-4743-8ee2-55d33f624fc9",
+      "name": "Switch3"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request12",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request9": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Message": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Send Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Message1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Message1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Message2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request12": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request14": {
+      "main": [
+        [
+          {
+            "node": "Switch3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request5": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {
+    "Webhook": [
+      {
+        "headers": {
+          "host": "n8n.srv1066443.hstgr.cloud",
+          "user-agent": "axios/1.12.0",
+          "content-length": "77",
+          "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+          "accept-encoding": "gzip, compress, deflate, br",
+          "content-type": "application/json",
+          "x-forwarded-for": "172.18.0.1",
+          "x-forwarded-host": "n8n.srv1066443.hstgr.cloud",
+          "x-forwarded-port": "443",
+          "x-forwarded-proto": "https",
+          "x-forwarded-server": "d666f87417e8",
+          "x-real-ip": "172.18.0.1"
+        },
+        "params": {},
+        "query": {},
+        "body": {
+          "key": "check_availability",
+          "studioName": "Miramar",
+          "date": "2025-12-05T18:00"
+        },
+        "webhookUrl": "https://n8n.srv1066443.hstgr.cloud/webhook/retell",
+        "executionMode": "production"
+      }
+    ]
+  },
+  "meta": {
+    "instanceId": "2290e35adb7a4a49a129e98b9d64c08c12bada1f585aa2e4c9049d5940a23721"
+  }
+}
